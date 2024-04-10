@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SolarSystem : MonoBehaviour
 {
     readonly float G = 100f;
     public Rigidbody[] stars;
-    
+    private int currentTarget = 0;
+    public TextMeshProUGUI currentTargetDisplay;
+
     void Start()
     {
         InitialVelocity();
+        currentTargetDisplay.text = stars[currentTarget].name.ToString();
+        CameraFollow.Instance.SetCameraFollow(stars[currentTarget].transform,currentTarget);
     }
 
     void FixedUpdate()
@@ -50,5 +55,14 @@ public class SolarSystem : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ChangeCameraTarget(int index)
+    {
+        currentTarget += index;
+        if(currentTarget > stars.Length -1){currentTarget = 0;}
+        if(currentTarget < 0){currentTarget = stars.Length -1;}
+        currentTargetDisplay.text = stars[currentTarget].name.ToString();
+        CameraFollow.Instance.SetCameraFollow(stars[currentTarget].transform,currentTarget);
     }
 }

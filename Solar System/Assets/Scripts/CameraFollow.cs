@@ -1,35 +1,56 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraFollow : MonoBehaviour
 {
-    private static CameraFollow Instance;
+    public static CameraFollow Instance;
     private Camera mainCam;
-    public Transform toFollow;
-    [Range(30,100)]public float fieldOfView = 60;
-    [Range(-1000,1000)]public float xOffset = 0;
-    [Range(0,15000)]public float distanceOffset = 100;
+    private Transform toFollow;
+    [SerializeField]private Vector2[] minMaxCameraDistances;
+    [SerializeField]private Slider cameraDistanceSlider;
+    [SerializeField,Range(30,100)]private float fieldOfView = 60;
+    [SerializeField,Range(-1000,1000)]private float xOffset = 0;
+    private float distanceOffset = 100;
 
     void Awake()
     {
         if(Instance != null && Instance != this)
         {
-            Instance = this;
+            Destroy(gameObject);
         }else
         {
-            Destroy(gameObject);
+            Instance = this;
         }
     }
 
     void Start()
     {
         mainCam = Camera.main;
+        cameraDistanceSlider.maxValue = minMaxCameraDistances[0].y;
+        cameraDistanceSlider.minValue = minMaxCameraDistances[0].x;
+        cameraDistanceSlider.value = distanceOffset;
     }
 
     void LateUpdate()
     {
         if(toFollow != null){transform.position = toFollow.position + new Vector3(xOffset, distanceOffset, -distanceOffset);}
         if(mainCam.fieldOfView != fieldOfView){ mainCam.fieldOfView = fieldOfView;}
+    }
+
+    public void SetCameraFollow(Transform obj,int index)
+    {
+        toFollow = obj;
+        cameraDistanceSlider.maxValue = minMaxCameraDistances[index].y;
+        cameraDistanceSlider.minValue = minMaxCameraDistances[index].x;
+        cameraDistanceSlider.value = minMaxCameraDistances[index].x + 50;
+    }
+
+    public void ChangeCameraDistance()
+    {
+        distanceOffset = cameraDistanceSlider.value;
     }
 }
