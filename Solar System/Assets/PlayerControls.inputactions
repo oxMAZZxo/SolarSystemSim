@@ -1,0 +1,159 @@
+{
+    "name": "PlayerControls",
+    "maps": [
+        {
+            "name": "Camera",
+            "id": "b5f0b627-bb75-4244-8f1f-d8df7bc2e164",
+            "actions": [
+                {
+                    "name": "ChangePlanet",
+                    "type": "Button",
+                    "id": "838e3ef4-dd2e-487d-ab5b-51fd428420bb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeDistance",
+                    "type": "Button",
+                    "id": "a61660fd-dd30-4814-b101-fa9cb3fb89ea",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis AD",
+                    "id": "a74b3e2b-3827-4b47-b210-13b3a0599985",
+                    "path": "1DAxis(whichSideWins=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangePlanet",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "f38ecd04-5b71-4cce-aa6e-febec46ea8c5",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangePlanet",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "58f52e27-19c4-4640-9ee9-5d2add435d15",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangePlanet",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis Arrows",
+                    "id": "052ebe1e-bde2-48bf-b2c1-9fcb7efd84e8",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangePlanet",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "6710cf2d-bfd7-4fc2-92ec-b60f9e3c5c8d",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangePlanet",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "7ba6df8c-0362-4a7d-991a-fae1b167b763",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangePlanet",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "9d6c93b5-a3fc-4ade-aaa5-2198d6a586bb",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeDistance",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "6a34787e-6305-40c6-9c8b-b37ae6cfa261",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeDistance",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "7746e27e-9b6b-47e0-99e0-c02744832afa",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeDistance",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "Settings",
+            "id": "1a996158-d997-4fb8-bf13-fc5a541f2309",
+            "actions": [
+                {
+                    "name": "Open",
+                    "type": "Button",
+                    "id": "f2470149-84bb-40b3-adfd-d9faa94c2010",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7d7ed250-3a53-4c4a-bd92-ac7aab4696ca",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Open",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

@@ -50,12 +50,44 @@ public class CameraFollow : MonoBehaviour
         toFollow = obj;
         cameraDistanceSlider.maxValue = minMaxCameraDistances[index].y;
         cameraDistanceSlider.minValue = minMaxCameraDistances[index].x;
-        cameraDistanceSlider.value = minMaxCameraDistances[index].x + 50;
+        
+        if(cameraDistanceSlider.value > minMaxCameraDistances[index].y)
+        {
+            distanceOffset = minMaxCameraDistances[index].y;
+            cameraDistanceSlider.value = distanceOffset;
+        }
+        if(cameraDistanceSlider.value < minMaxCameraDistances[index].x)
+        {
+            distanceOffset = minMaxCameraDistances[index].x;
+            cameraDistanceSlider.value = distanceOffset;
+        }
     }
 
     public void ChangeCameraDistance()
     {
         distanceOffset = cameraDistanceSlider.value;
+    }
+
+    public void ChangeCameraDistance(int index, float amount)
+    {
+        Debug.Log("Amount to move by is " + amount);
+        Debug.Log("Current distance from target is " + distanceOffset);
+        Debug.Log("Current amount + distance offset is " + (amount + distanceOffset).ToString());
+
+        if(amount + distanceOffset > minMaxCameraDistances[index].y) 
+        {
+            Debug.Log("Reached max distance from camera");
+            distanceOffset = minMaxCameraDistances[index].y; 
+            return;
+        }
+        if(amount + distanceOffset < minMaxCameraDistances[index].x) 
+        {
+            Debug.Log("Reached min distance from camera");
+            distanceOffset = minMaxCameraDistances[index].x; 
+            return;
+        }
+        distanceOffset += amount;
+        cameraDistanceSlider.value += amount;
     }
 
     public void ChangeXOffset()
