@@ -12,8 +12,9 @@ public class CameraFollow : MonoBehaviour
     private Transform toFollow;
     [SerializeField]private Vector2[] minMaxCameraDistances;
     [SerializeField]private Slider cameraDistanceSlider;
+    [SerializeField]private Slider xOffsetSlider;
     [SerializeField,Range(30,100)]private float fieldOfView = 60;
-    [SerializeField,Range(-1000,1000)]private float xOffset = 0;
+    private float xOffset = 0;
     private float distanceOffset = 100;
 
     void Awake()
@@ -33,6 +34,9 @@ public class CameraFollow : MonoBehaviour
         cameraDistanceSlider.maxValue = minMaxCameraDistances[0].y;
         cameraDistanceSlider.minValue = minMaxCameraDistances[0].x;
         cameraDistanceSlider.value = distanceOffset;
+        xOffsetSlider.maxValue = 1000;
+        xOffsetSlider.minValue = -1000;
+        xOffsetSlider.value = 0;
     }
 
     void LateUpdate()
@@ -52,5 +56,10 @@ public class CameraFollow : MonoBehaviour
     public void ChangeCameraDistance()
     {
         distanceOffset = cameraDistanceSlider.value;
+    }
+
+    public void ChangeXOffset()
+    {
+        xOffset = xOffsetSlider.value;
     }
 }
