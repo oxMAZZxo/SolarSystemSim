@@ -16,5 +16,10 @@ public class Star : MonoBehaviour
         transform.Rotate(initialVelocity * Time.fixedDeltaTime, Space.World);
     }
 
-    public void SetInitalVelocity(Vector3 newValue){initialVelocity = newValue;}
+    public void SetInitalVelocity(Vector3 newValue)
+    {
+        initialVelocity = newValue;
+        //initialVelocity.x = newValue.y;
+        //initialVelocity.y = newValue.x;
+    }
 }

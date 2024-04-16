@@ -126,6 +126,7 @@ public class SolarSystem : MonoBehaviour
 
     public void Exit()
     {
+        Debug.Log("Exiting");
         Application.Quit();
     }
 

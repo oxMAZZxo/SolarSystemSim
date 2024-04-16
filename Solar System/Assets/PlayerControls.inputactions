@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Trails",
+                    "type": "Button",
+                    "id": "de32c47f-974b-47aa-acc5-dfd32c0eaeef",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -189,6 +198,17 @@
                     "action": "ChangeDistance",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "157b7476-7293-4d22-8565-de02a1b93e13",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Trails",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

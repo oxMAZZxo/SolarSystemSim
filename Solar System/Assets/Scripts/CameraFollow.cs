@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class CameraFollow : MonoBehaviour
@@ -16,6 +17,9 @@ public class CameraFollow : MonoBehaviour
     [SerializeField,Range(30,100)]private float fieldOfView = 60;
     private float xOffset = 0;
     private float distanceOffset = 100;
+    private TrailRenderer[] starTrails;
+    [SerializeField]private InputActionReference trailInput;
+    private bool showTrails = true;
 
     void Awake()
     {
@@ -37,6 +41,8 @@ public class CameraFollow : MonoBehaviour
         xOffsetSlider.maxValue = 1000;
         xOffsetSlider.minValue = -1000;
         xOffsetSlider.value = 0;
+
+        starTrails = FindObjectsByType<TrailRenderer>(FindObjectsSortMode.None);
     }
 
     void LateUpdate()
@@ -70,19 +76,19 @@ public class CameraFollow : MonoBehaviour
 
     public void ChangeCameraDistance(int index, float amount)
     {
-        Debug.Log("Amount to move by is " + amount);
-        Debug.Log("Current distance from target is " + distanceOffset);
-        Debug.Log("Current amount + distance offset is " + (amount + distanceOffset).ToString());
+        // Debug.Log("Amount to move by is " + amount);
+        // Debug.Log("Current distance from target is " + distanceOffset);
+        // Debug.Log("Current amount + distance offset is " + (amount + distanceOffset).ToString());
 
         if(amount + distanceOffset > minMaxCameraDistances[index].y) 
         {
-            Debug.Log("Reached max distance from camera");
+            //Debug.Log("Reached max distance from camera");
             distanceOffset = minMaxCameraDistances[index].y; 
             return;
         }
         if(amount + distanceOffset < minMaxCameraDistances[index].x) 
         {
-            Debug.Log("Reached min distance from camera");
+            //Debug.Log("Reached min distance from camera");
             distanceOffset = minMaxCameraDistances[index].x; 
             return;
         }
@@ -95,9 +101,30 @@ public class CameraFollow : MonoBehaviour
         xOffset = xOffsetSlider.value;
     }
 
+    private void OnTrailInput(InputAction.CallbackContext input)
+    {
+        showTrails = !showTrails;
+        foreach(TrailRenderer trail in starTrails)
+        {
+            trail.enabled = showTrails;
+        }
+    }
+
     public void ResetXOffset()
     {
         xOffset = 0;
         xOffsetSlider.value = 0;
+    }
+
+    void OnEnable()
+    {
+        trailInput.action.Enable();
+        trailInput.action.performed += OnTrailInput;
+    }
+
+    void OnDisable()
+    {
+        trailInput.action.Enable();
+        trailInput.action.performed -= OnTrailInput;
     }
 }
