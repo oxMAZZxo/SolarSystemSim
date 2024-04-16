@@ -59,6 +59,7 @@ public class SolarSystem : MonoBehaviour
                     float r = Vector3.Distance(a.gameObject.transform.position,b.gameObject.transform.position);
                     a.transform.LookAt(b.transform);
                     a.velocity += a.transform.right * Mathf.Sqrt((G * m2) / r);
+                    a.GetComponent<Star>()?.SetInitalVelocity(a.velocity);
                 }
             }
         }
@@ -75,6 +76,7 @@ public class SolarSystem : MonoBehaviour
 
     private void OnChangePlanetInput(InputAction.CallbackContext input)
     {
+        if(input.control.device.name == "Mouse" && settingsOpen){return;}
         ChangeCameraTarget((int)input.ReadValue<float>());
     }
 

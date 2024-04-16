@@ -94,4 +94,10 @@ public class CameraFollow : MonoBehaviour
     {
         xOffset = xOffsetSlider.value;
     }
+
+    public void ResetXOffset()
+    {
+        xOffset = 0;
+        xOffsetSlider.value = 0;
+    }
 }
