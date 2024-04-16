@@ -80,7 +80,13 @@ public class SolarSystem : MonoBehaviour
 
     private void OnCameraDistanceInput(InputAction.CallbackContext input)
     {
-        CameraFollow.Instance.ChangeCameraDistance(currentTarget, 10 * input.ReadValue<float>());
+        if(input.control.device.name == "Mouse")
+        {
+            CameraFollow.Instance.ChangeCameraDistance(currentTarget, input.ReadValue<float>());
+        }else
+        {
+            CameraFollow.Instance.ChangeCameraDistance(currentTarget, 10 * input.ReadValue<float>());
+        }
     }
 
     private void OnSettingsInput(InputAction.CallbackContext input)
