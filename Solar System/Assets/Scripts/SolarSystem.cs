@@ -53,7 +53,7 @@ public class SolarSystem : MonoBehaviour
         {
             foreach(Rigidbody b in stars)
             {
-                if(!a.Equals(b))
+                if(b != a)
                 {
                     float m2 = b.mass;
                     float r = Vector3.Distance(a.gameObject.transform.position,b.gameObject.transform.position);

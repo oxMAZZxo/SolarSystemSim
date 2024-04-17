@@ -38,6 +38,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _DistortionScale: 37.3
+    - _FresnelEffectPower: 5
     - _NoisePower: 3.31
     - _NoiseScale: 4.9
     - _QueueControl: 0

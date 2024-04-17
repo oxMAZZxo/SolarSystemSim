@@ -57,6 +57,7 @@ Material:
     - _CellDensity: 66.07
     - _CellSpeed: 12.47
     - _DistortionScale: 100
+    - _FresnelEffectPower: 7
     - _NoisePower: 2.5
     - _NoiseScale: 30
     - _QueueControl: 0
