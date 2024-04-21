@@ -20,6 +20,9 @@ public class CameraFollow : MonoBehaviour
     private TrailRenderer[] starTrails;
     [SerializeField]private InputActionReference trailInput;
     private bool showTrails = true;
+    [SerializeField]private GameObject HUD;
+    [SerializeField]private InputActionReference hudInput;
+    private bool showHud = true;
 
     void Awake()
     {
@@ -110,6 +113,12 @@ public class CameraFollow : MonoBehaviour
         }
     }
 
+    private void OnHUDInput(InputAction.CallbackContext input)
+    {
+        showHud = !showHud;
+        HUD.SetActive(showHud);
+    }
+
     public void ResetXOffset()
     {
         xOffset = 0;
@@ -119,12 +128,17 @@ public class CameraFollow : MonoBehaviour
     void OnEnable()
     {
         trailInput.action.Enable();
+        hudInput.action.Enable();
         trailInput.action.performed += OnTrailInput;
+        hudInput.action.performed += OnHUDInput;
+
     }
 
     void OnDisable()
     {
-        trailInput.action.Enable();
+        trailInput.action.Disable();
+        hudInput.action.Disable();
         trailInput.action.performed -= OnTrailInput;
+        hudInput.action.performed -= OnHUDInput;
     }
 }

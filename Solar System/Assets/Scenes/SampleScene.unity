@@ -1053,7 +1053,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 50
+  m_Time: 10
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -2227,6 +2227,8 @@ MonoBehaviour:
   xOffsetSlider: {fileID: 1380223972}
   fieldOfView: 60
   trailInput: {fileID: -2006909785935382683, guid: 657db9b37ef19bc4683c6827cafaf155, type: 3}
+  HUD: {fileID: 302751282}
+  hudInput: {fileID: 5894127653656199354, guid: 657db9b37ef19bc4683c6827cafaf155, type: 3}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
